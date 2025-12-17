@@ -1,0 +1,13 @@
+tests
+README
+javadoc
+swagger-ui
+sequence diagram
+validate received DTOs
+
+/api/drivers/start-ride
+
+maybe later:
+    geospatial querying
+    docker
+    postman tests
