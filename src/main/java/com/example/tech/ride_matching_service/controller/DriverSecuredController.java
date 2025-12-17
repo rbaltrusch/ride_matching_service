@@ -24,6 +24,9 @@ public class DriverSecuredController {
     /** Register driver availability */
     @PatchMapping("register-available")
     private ResponseEntity<Void> registerDriverAsAvailable(@PathVariable final Long id) {
+        if (service.fetchDriver(id).isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
         service.updateDriverAvailability(id, true);
         return ResponseEntity.noContent().build();
     }
@@ -31,6 +34,9 @@ public class DriverSecuredController {
     /** Register driver availability */
     @PatchMapping("location")
     private ResponseEntity<Void> updateDriverLocation(@PathVariable final Long id, @RequestBody LocationDto location) {
+        if (service.fetchDriver(id).isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
         service.updateDriverLocation(id, location.convert());
         return ResponseEntity.noContent().build();
     }
