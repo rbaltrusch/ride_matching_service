@@ -31,6 +31,7 @@ public class DriverSecuredController {
         return ResponseEntity.noContent().build();
     }
 
+    // TODO: should return HTTP 404 if driver cannot be found
     /** Register driver availability */
     @PatchMapping("location")
     private ResponseEntity<Void> updateDriverLocation(@PathVariable final Long id, @RequestBody LocationDto location) {

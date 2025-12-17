@@ -34,6 +34,7 @@ public class RiderSecuredController {
     @Autowired
     private RideService rideService;
 
+    // TODO: should return HTTP 404 if rider cannot be found
     /** Request a ride */
     @PostMapping
     @Transactional
@@ -44,6 +45,7 @@ public class RiderSecuredController {
         return rideService.startRide(driverId, id).map(RideDto::of);
     }
 
+    // TODO: should return HTTP 404 if rider or ride cannot be found
     // TODO: should respond with BAD_REQUEST if ride is not ongoing.
     /** Complete the ride */
     @Transactional
