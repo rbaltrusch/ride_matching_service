@@ -41,7 +41,7 @@ public class RiderSecuredController {
     public Optional<RideDto> requestRide(@PathVariable final Long id, @RequestBody final LocationDto dto) {
         Optional<Driver> driver = IterTools.stream(driverService.fetchClosestDrivers(dto.convert(), 1)).findFirst();
         Long driverId = driver.map(x -> x.getId()).orElse(null);
-        driverService.updateDriverAvailability(id, false);
+        driverService.updateDriverAvailability(driverId, false);
         return rideService.startRide(driverId, id).map(RideDto::of);
     }
 
